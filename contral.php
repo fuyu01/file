@@ -1,17 +1,17 @@
 <?php
-     	/* a¸ù¾ÝÔÚ¸Ã½Å±¾ÖÐËùÓÃµ½µÄÀàÃû£¬×Ô¶¯¼ÓÔØµ±Ç°½Å±¾ËùÔÚÄ¿Â¼ÏÂ¶ÔÓ¦¸ÃÃûÀà³ÆµÄ½Å±¾ÎÄ¼þ */
+     	/* aæ ¹æ®åœ¨è¯¥è„šæœ¬ä¸­æ‰€ç”¨åˆ°çš„ç±»åï¼Œè‡ªåŠ¨åŠ è½½å½“å‰è„šæœ¬æ‰€åœ¨ç›®å½•ä¸‹å¯¹åº”è¯¥åç±»ç§°çš„è„šæœ¬æ–‡ä»¶ */
 	function __autoload($className){        
 		include $className."_class.php";
 	}
-	isset($_GET["action"]) or die("Ã»ÓÐÈÎºÎ»î¶¯·¢Éú£¡");   //Èç¹ûÃ»ÓÐÈÎºÎÓÃ»§»î¶¯ÔòÍË³ö
+	isset($_GET["action"]) or die("æ²¡æœ‰ä»»ä½•æ´»åŠ¨å‘ç”Ÿï¼");   //å¦‚æžœæ²¡æœ‰ä»»ä½•ç”¨æˆ·æ´»åŠ¨åˆ™é€€å‡º
 	
-     	/* ¸ù¾Ý½ÓÊÕµ½µÄÎÄ¼þÃû³ÆºÍ»î¶¯×Ö·û´®´´½¨FileAction¶ÔÏó    */
+     	/* æ ¹æ®æŽ¥æ”¶åˆ°çš„æ–‡ä»¶åç§°å’Œæ´»åŠ¨å­—ç¬¦ä¸²åˆ›å»ºFileActionå¯¹è±¡    */
 	$fileaction=new FileAction($_GET["filename"], $_GET["action"]);  
-	$fileaction->getFileInfo();   //µ÷ÓÃFileAction¶ÔÏóÖÐµÄgetFileInfo()·½·¨»ñÈ¡¶ÔÏóÖÐµÄÊôÐÔÐÅÏ¢
+	$fileaction->getFileInfo();   //è°ƒç”¨FileActionå¯¹è±¡ä¸­çš„getFileInfo()æ–¹æ³•èŽ·å–å¯¹è±¡ä¸­çš„å±žæ€§ä¿¡æ¯
 
-	if(isset($_GET["dirname"]))    //Èç¹û½ÓÊÕµ½Ìá¹©¹ýÀ´µÄÄ¿Â¼Ãû³ÆÔòÌõ¼þ³ÉÁ¢
-		$fileaction->getForm("filesystem.php?dirname=".$_GET["dirname"]);  //»ñÈ¡ÓÃ»§²Ù×÷±íµ¥½çÃæ
+	if(isset($_GET["dirname"]))    //å¦‚æžœæŽ¥æ”¶åˆ°æä¾›è¿‡æ¥çš„ç›®å½•åç§°åˆ™æ¡ä»¶æˆç«‹
+		$fileaction->getForm("filesystem.php?dirname=".$_GET["dirname"]);  //èŽ·å–ç”¨æˆ·æ“ä½œè¡¨å•ç•Œé¢
 	else
-		$fileaction->getForm("filesystem.php");                          //»ñÈ¡ÓÃ»§²Ù×÷±íµ¥½çÃæaab
+		$fileaction->getForm("filesystem.php");                          //èŽ·å–ç”¨æˆ·æ“ä½œè¡¨å•ç•Œé¢aac
 ?>
 
