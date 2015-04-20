@@ -1,101 +1,101 @@
 <?php
-	/* ÎÄ¼şÃûÎªDirc_class.php                                            */ 
-	/* ÊÇÄ¿Â¼Àà£¬¼Ì³ĞÁËFileDirÀà£¬ÓÖÀ©Õ¹ÁËÒ»Ğ©ºÍÄ¿Â¼ÓĞ¹Ø´¦ÀíµÄ³ÉÔ±·½·¨  */
+	/* æ–‡ä»¶åä¸ºDirc_class.php                                            */ 
+	/* æ˜¯ç›®å½•ç±»ï¼Œç»§æ‰¿äº†FileDirç±»ï¼Œåˆæ‰©å±•äº†ä¸€äº›å’Œç›®å½•æœ‰å…³å¤„ç†çš„æˆå‘˜æ–¹æ³•  */
 	class Dirc extends FileDir{
-         	/* ¹¹Ôì·½·¨£¬ÔÚ´´½¨Ä¿Â¼¶ÔÏóÊ±£¬³õÊ¹»¯Ä¿Â¼³ÉÔ±ÊôĞÔ      */
-         	/* ²ÎÊıfilename£ºĞèÒªÌá¹©Ò»¸öÎÄ¼şÃû³Æ                   */
+         	/* æ„é€ æ–¹æ³•ï¼Œåœ¨åˆ›å»ºç›®å½•å¯¹è±¡æ—¶ï¼Œåˆä½¿åŒ–ç›®å½•æˆå‘˜å±æ€§      */
+         	/* å‚æ•°filenameï¼šéœ€è¦æä¾›ä¸€ä¸ªæ–‡ä»¶åç§°                   */
 		function __construct($dirname=".") {
-			if(!file_exists($dirname)){    //Èç¹ûÌá¹©µÄÄ¿Â¼²»´æÔÚÔòÊ¹ÓÃmkdir()º¯Êı´´½¨¸ÃÄ¿Â¼
-				mkdir($dirname) or die("Ä¿Â¼<b>".$dirname."</b>´´½¨Ê§°Ü£¡");
+			if(!file_exists($dirname)){    //å¦‚æœæä¾›çš„ç›®å½•ä¸å­˜åœ¨åˆ™ä½¿ç”¨mkdir()å‡½æ•°åˆ›å»ºè¯¥ç›®å½•
+				mkdir($dirname) or die("ç›®å½•<b>".$dirname."</b>åˆ›å»ºå¤±è´¥ï¼");
 			}	
-			$this->name=$dirname;                          //Îª³ÉÔ±ÊôĞÔname¸³³õÖµ
-			$this->type="directory/";                         //Îª³ÉÔ±ÊôĞÔtype¸³³õÖµ
-			$this->size=$this->toSize($this->dirSize($dirname));   //Îª³ÉÔ±ÊôĞÔsize¸³³õÖµ
-			parent::__construct($dirname);      //µ÷ÓÃ¸¸Àà¹¹Ôì·½·¨ÎªÆäËû³ÉÔ±ÊôĞÔ¸³³õÖµ
+			$this->name=$dirname;                          //ä¸ºæˆå‘˜å±æ€§nameèµ‹åˆå€¼
+			$this->type="directory/";                         //ä¸ºæˆå‘˜å±æ€§typeèµ‹åˆå€¼
+			$this->size=$this->toSize($this->dirSize($dirname));   //ä¸ºæˆå‘˜å±æ€§sizeèµ‹åˆå€¼
+			parent::__construct($dirname);      //è°ƒç”¨çˆ¶ç±»æ„é€ æ–¹æ³•ä¸ºå…¶ä»–æˆå‘˜å±æ€§èµ‹åˆå€¼
 		}
-         	/*  ÊµÏÖ¸¸ÀàÖĞµÄ³éÏó·½·¨£¬ÖØĞ´É¾³ıÎÄ¼şµÄ·½·¨Ìå */
-         	/*  Èç¹ûÄ¿Â¼É¾³ı³É¹¦·µ»ØTrue£¬Ê§°ÜÔò·µ»ØFalse  */
+         	/*  å®ç°çˆ¶ç±»ä¸­çš„æŠ½è±¡æ–¹æ³•ï¼Œé‡å†™åˆ é™¤æ–‡ä»¶çš„æ–¹æ³•ä½“ */
+         	/*  å¦‚æœç›®å½•åˆ é™¤æˆåŠŸè¿”å›Trueï¼Œå¤±è´¥åˆ™è¿”å›False  */
 		public function delFile() {
-			$this->delDir($this->name);       //µ÷ÓÃ¶ÔÏóÄÚ²¿×Ô¶¨ÒåµÄÉ¾³ıÄ¿Â¼·½·¨
-			if(!file_exists($this->name))       //Èç¹ûÄ¿±êÄ¿Â¼²»´æÔÚÔò±»É¾³ıÁË
-				return true;                //Èç¹ûÄ¿Â¼±»É¾³ıÁËÔò·µ»ØÕæ
+			$this->delDir($this->name);       //è°ƒç”¨å¯¹è±¡å†…éƒ¨è‡ªå®šä¹‰çš„åˆ é™¤ç›®å½•æ–¹æ³•
+			if(!file_exists($this->name))       //å¦‚æœç›®æ ‡ç›®å½•ä¸å­˜åœ¨åˆ™è¢«åˆ é™¤äº†
+				return true;                //å¦‚æœç›®å½•è¢«åˆ é™¤äº†åˆ™è¿”å›çœŸ
 			else
-				return false;               //Èç¹ûÄ¿Â¼»¹´æÔÚ£¬ÔòÉ¾³ıÊ§°Ü·µ»Ø¼Ù
+				return false;               //å¦‚æœç›®å½•è¿˜å­˜åœ¨ï¼Œåˆ™åˆ é™¤å¤±è´¥è¿”å›å‡
 		}
 		
-	    	/*  ÊµÏÖ¸¸ÀàÖĞµÄ³éÏó·½·¨£¬ÖØĞ´¸´ÖÆÎÄ¼şµÄ·½·¨Ìå */
-         	/*  Èç¹ûÄ¿Â¼¸´ÖÆ³É¹¦·µ»ØTrue£¬Ê§°ÜÔò·µ»ØFalse  */
+	    	/*  å®ç°çˆ¶ç±»ä¸­çš„æŠ½è±¡æ–¹æ³•ï¼Œé‡å†™å¤åˆ¶æ–‡ä»¶çš„æ–¹æ³•ä½“ */
+         	/*  å¦‚æœç›®å½•å¤åˆ¶æˆåŠŸè¿”å›Trueï¼Œå¤±è´¥åˆ™è¿”å›False  */
 		public function copyFile($dFile){
-			$this->copyDir($this->name, $dFile);  //µ÷ÓÃ¶ÔÏóÄÚ²¿×Ô¶¨Òå¸´ÖÆÄ¿Â¼µÄ·½·¨
-			if(file_exists($dFile))               //Èç¹ûÄ¿±êÄ¿Â¼´æÔÚÔò¸´ÖÆ³É¹¦
-				return true;                   //Èç¹ûÄ¿Â¼¸´ÖÆ³É¹¦Ôò·µ»ØÕæ
+			$this->copyDir($this->name, $dFile);  //è°ƒç”¨å¯¹è±¡å†…éƒ¨è‡ªå®šä¹‰å¤åˆ¶ç›®å½•çš„æ–¹æ³•
+			if(file_exists($dFile))               //å¦‚æœç›®æ ‡ç›®å½•å­˜åœ¨åˆ™å¤åˆ¶æˆåŠŸ
+				return true;                   //å¦‚æœç›®å½•å¤åˆ¶æˆåŠŸåˆ™è¿”å›çœŸ
 			else
-				return false;                  //Èç¹ûÄ¿Â¼¸´ÖÆÊ§°ÜÔò·µ»Ø¼Ù
+				return false;                  //å¦‚æœç›®å½•å¤åˆ¶å¤±è´¥åˆ™è¿”å›å‡
 		}
 
-        	 /* µİ¹é»ñÈ¡Ä¿Â¼Õ¼ÓÃ´óĞ¡£¬Ä¿Â¼ÖĞËùÓĞÎÄ¼ş´óĞ¡±éÀúÀÛ¼ÓÔÚÒ»Æğ£¬¼´Ä¿Â¼´óĞ¡ */
-        	 /* ²ÎÊıdirectory£ºÌá¹©ĞèÒª»ñÈ¡´óĞ¡µÄÄ¿Â¼                               */
-         	/* ·µ»ØÖµdir_size£º½«¼ÆËãºóµÄÎÄ¼ş´óĞ¡·µ»Ø                              */
+        	 /* é€’å½’è·å–ç›®å½•å ç”¨å¤§å°ï¼Œç›®å½•ä¸­æ‰€æœ‰æ–‡ä»¶å¤§å°éå†ç´¯åŠ åœ¨ä¸€èµ·ï¼Œå³ç›®å½•å¤§å° */
+        	 /* å‚æ•°directoryï¼šæä¾›éœ€è¦è·å–å¤§å°çš„ç›®å½•                               */
+         	/* è¿”å›å€¼dir_sizeï¼šå°†è®¡ç®—åçš„æ–‡ä»¶å¤§å°è¿”å›                              */
 		private function dirSize($directory) {     
-			$dir_size=0;                                  //ÉùÃ÷ÓÃÀ´´æ´¢ÎÄ¼ş´óĞ¡µÄ±äÁ¿
-			if($dir_handle=opendir($directory)) {             //´ò¿ªÄ¿Â¼£¬·µ»ØÄ¿Â¼Ö¸Õë
-				while($filename=@readdir($dir_handle)) {    //Ñ­»·±éÀúÄ¿Â¼ÖĞµÄÎÄ¼ş
-					if($filename!="." && $filename!="..") {  //È¥µô.ºÍ..Ä¿Â¼
-						$subFile=$directory."/".$filename;  //½«Ä¿Â¼ÖĞµÄÎÄ¼şºÍµ±Ç°Ä¿Â¼Á¬½Ó
-						if(is_dir($subFile))               //Èç¹û±éÀúµÄÊÇÄ¿Â¼
-							$dir_size+=$this->dirSize($subFile);  //µ÷ÓÃ×Ô¼º¼ÆËã×ÓÄ¿Â¼´óĞ¡
-						if(is_file($subFile))              //Èç¹û±éÀúµÄÊÇÎÄ¼ş
-							$dir_size+=filesize($subFile);  //Ö±½Ó»ñÈ¡ÎÄ¼ş´óĞ¡²¢ÀÛ¼ÓÆğÀ´
+			$dir_size=0;                                  //å£°æ˜ç”¨æ¥å­˜å‚¨æ–‡ä»¶å¤§å°çš„å˜é‡
+			if($dir_handle=opendir($directory)) {             //æ‰“å¼€ç›®å½•ï¼Œè¿”å›ç›®å½•æŒ‡é’ˆ
+				while($filename=@readdir($dir_handle)) {    //å¾ªç¯éå†ç›®å½•ä¸­çš„æ–‡ä»¶
+					if($filename!="." && $filename!="..") {  //å»æ‰.å’Œ..ç›®å½•
+						$subFile=$directory."/".$filename;  //å°†ç›®å½•ä¸­çš„æ–‡ä»¶å’Œå½“å‰ç›®å½•è¿æ¥
+						if(is_dir($subFile))               //å¦‚æœéå†çš„æ˜¯ç›®å½•
+							$dir_size+=$this->dirSize($subFile);  //è°ƒç”¨è‡ªå·±è®¡ç®—å­ç›®å½•å¤§å°
+						if(is_file($subFile))              //å¦‚æœéå†çš„æ˜¯æ–‡ä»¶
+							$dir_size+=filesize($subFile);  //ç›´æ¥è·å–æ–‡ä»¶å¤§å°å¹¶ç´¯åŠ èµ·æ¥
 					}
 				}     
-		    		closedir($dir_handle);		               //¹Ø±ÕÄ¿Â¼
-				return $dir_size;                         //·µ»ØÄ¿Â¼´óĞ¡
+		    		closedir($dir_handle);		               //å…³é—­ç›®å½•
+				return $dir_size;                         //è¿”å›ç›®å½•å¤§å°
 			}
 		}
 
-         	/* µİ¹éÉ¾³ıÄ¿Â¼ÖĞµÄÎÄ¼ş£¬ÔÙÉ¾³ı¿ÕÄ¿Â¼       */
-         	/* ²ÎÊıdirectory£ºÌá¹©Òª±»É¾³ıµÄÄ¿Â¼         */
+         	/* é€’å½’åˆ é™¤ç›®å½•ä¸­çš„æ–‡ä»¶ï¼Œå†åˆ é™¤ç©ºç›®å½•       */
+         	/* å‚æ•°directoryï¼šæä¾›è¦è¢«åˆ é™¤çš„ç›®å½•         */
 		private function delDir($directory) {         
-			if(file_exists($directory)) {                        //ÅĞ¶Ï±»É¾³ıµÄÄ¿Â¼ÊÇ·ñ´æÔÚ
-				if($dir_handle=@opendir($directory)) {         //´ò¿ªÄ¿Â¼£¬·µ»ØÄ¿Â¼Ö¸Õë
-					while($filename=readdir($dir_handle)) {   //Ñ­»·±éÀúÄ¿Â¼ÖĞµÄÎÄ¼ş
-						if($filename!="." && $filename!="..") {   //È¥µô.ºÍ..Ä¿Â¼
-							$subFile=$directory."/".$filename;   //Á¬½ÓÄ¿Â¼Ãû
-							if(is_dir($subFile))                //Èç¹û±éÀúµÄÊÇÄ¿Â¼
-								$this->delDir($subFile);       //µ÷ÓÃ×Ô¼ºÉ¾³ı×ÓÄ¿Â¼
-							if(is_file($subFile))               //Èç¹û±éÀúµÄÊÇÎÄ¼ş
-								unlink($subFile);            //Ö±½ÓÉ¾³ıÎÄ¼ş
+			if(file_exists($directory)) {                        //åˆ¤æ–­è¢«åˆ é™¤çš„ç›®å½•æ˜¯å¦å­˜åœ¨
+				if($dir_handle=@opendir($directory)) {         //æ‰“å¼€ç›®å½•ï¼Œè¿”å›ç›®å½•æŒ‡é’ˆ
+					while($filename=readdir($dir_handle)) {   //å¾ªç¯éå†ç›®å½•ä¸­çš„æ–‡ä»¶
+						if($filename!="." && $filename!="..") {   //å»æ‰.å’Œ..ç›®å½•
+							$subFile=$directory."/".$filename;   //è¿æ¥ç›®å½•å
+							if(is_dir($subFile))                //å¦‚æœéå†çš„æ˜¯ç›®å½•
+								$this->delDir($subFile);       //è°ƒç”¨è‡ªå·±åˆ é™¤å­ç›®å½•
+							if(is_file($subFile))               //å¦‚æœéå†çš„æ˜¯æ–‡ä»¶
+								unlink($subFile);            //ç›´æ¥åˆ é™¤æ–‡ä»¶
 						}
 					}
-					closedir($dir_handle);                      //¹Ø±ÕÄ¿Â¼×ÊÔ´
-					rmdir($directory);                         //É¾³ı¿ÕÄ¿Â¼
+					closedir($dir_handle);                      //å…³é—­ç›®å½•èµ„æº
+					rmdir($directory);                         //åˆ é™¤ç©ºç›®å½•
 				}
 			}
 		}
 
-         	/* µİ¹é¸´ÖÆÄ¿Â¼¼°Ä¿Â¼ÏÂµÄÎÄ¼şµ½ĞÂµÄÎ»ÖÃ       */
-        	 /* ²ÎÊıdirSrc£ºÌá¹©Òª±»¸´ÖÆµÄÔ´Ä¿Â¼            */
-         	/* ²ÎÊıdirTo£ºÌá¹©Òª±»¸´ÖÆÄ¿Â¼µÄÄ¿±êÎ»ÖÃ       */
+         	/* é€’å½’å¤åˆ¶ç›®å½•åŠç›®å½•ä¸‹çš„æ–‡ä»¶åˆ°æ–°çš„ä½ç½®       */
+        	 /* å‚æ•°dirSrcï¼šæä¾›è¦è¢«å¤åˆ¶çš„æºç›®å½•            */
+         	/* å‚æ•°dirToï¼šæä¾›è¦è¢«å¤åˆ¶ç›®å½•çš„ç›®æ ‡ä½ç½®       */
 		private function copyDir($dirSrc, $dirTo) {       
-			if(is_file($dirTo)) {                      //Èç¹ûÄ¿±êÄ¿Â¼ÊÇÒ»¸öÎÄ¼şÔò²»ÄÜ¸´ÖÆ
-				echo "Ä¿±ê²»ÊÇÄ¿Â¼²»ÄÜ´´½¨!!";     //Êä³ö´íÎóĞÅÏ¢
-				return;                           //ÍË³öº¯Êı
+			if(is_file($dirTo)) {                      //å¦‚æœç›®æ ‡ç›®å½•æ˜¯ä¸€ä¸ªæ–‡ä»¶åˆ™ä¸èƒ½å¤åˆ¶
+				echo "ç›®æ ‡ä¸æ˜¯ç›®å½•ä¸èƒ½åˆ›å»º!!";     //è¾“å‡ºé”™è¯¯ä¿¡æ¯
+				return;                           //é€€å‡ºå‡½æ•°
 			}
-			if(!file_exists($dirTo)) {                 //Èç¹ûÄ¿±êÄ¿Â¼²»´æÔÚÔò´´½¨Ëü
-				mkdir($dirTo);                    //Ê¹ÓÃmkdir()º¯Êı´´½¨Ò»¸ö¿ÕÄ¿Â¼
+			if(!file_exists($dirTo)) {                 //å¦‚æœç›®æ ‡ç›®å½•ä¸å­˜åœ¨åˆ™åˆ›å»ºå®ƒ
+				mkdir($dirTo);                    //ä½¿ç”¨mkdir()å‡½æ•°åˆ›å»ºä¸€ä¸ªç©ºç›®å½•
 			}
-			if($dir_handle=@opendir($dirSrc)) {                 //´ò¿ªÔ´Ä¿Â¼£¬·µ»ØÄ¿Â¼Ö¸Õë
-				while($filename=readdir($dir_handle)) {         //Ñ­»·±éÀúÄ¿Â¼ÖĞµÄÎÄ¼ş
-					if($filename!="." && $filename!="..") {     //È¥µô.ºÍ..Ä¿Â¼
-						$subSrcFile=$dirSrc."/".$filename;     //»ñÈ¡Ô´Ä¿Â¼ÖĞ×ÓÄ¿Â¼ÎÄ¼şÃû
-						$subToFile=$dirTo."/".$filename;      //»ñÈ¡Ä¿±êÄ¿Â¼ÖĞ×ÓÄ¿Â¼ÎÄ¼şÃû
-						if(is_dir($subSrcFile))                     //ÅĞ¶Ï×ÓÎÄ¼şÊÇ·ñÊÇÄ¿Â¼
-							$this->copyDir($subSrcFile, $subToFile); //µ÷ÓÃ×Ô¼º¸´ÖÆ×ÓÄ¿Â¼
-						if(is_file($subSrcFile))                    //ÅĞ¶Ï×ÓÎÄ¼şÊÇ·ñÊÇÎÄ¼ş
-							copy($subSrcFile, $subToFile);        //Ö±½Ó¸´ÖÆµ½Ä¿±êÎ»ÖÃ
+			if($dir_handle=@opendir($dirSrc)) {                 //æ‰“å¼€æºç›®å½•ï¼Œè¿”å›ç›®å½•æŒ‡é’ˆ
+				while($filename=readdir($dir_handle)) {         //å¾ªç¯éå†ç›®å½•ä¸­çš„æ–‡ä»¶
+					if($filename!="." && $filename!="..") {     //å»æ‰.å’Œ..ç›®å½•
+						$subSrcFile=$dirSrc."/".$filename;     //è·å–æºç›®å½•ä¸­å­ç›®å½•æ–‡ä»¶å
+						$subToFile=$dirTo."/".$filename;      //è·å–ç›®æ ‡ç›®å½•ä¸­å­ç›®å½•æ–‡ä»¶å
+						if(is_dir($subSrcFile))                     //åˆ¤æ–­å­æ–‡ä»¶æ˜¯å¦æ˜¯ç›®å½•
+							$this->copyDir($subSrcFile, $subToFile); //è°ƒç”¨è‡ªå·±å¤åˆ¶å­ç›®å½•
+						if(is_file($subSrcFile))                    //åˆ¤æ–­å­æ–‡ä»¶æ˜¯å¦æ˜¯æ–‡ä»¶
+							copy($subSrcFile, $subToFile);        //ç›´æ¥å¤åˆ¶åˆ°ç›®æ ‡ä½ç½®
 					}
 				}
-				closedir($dir_handle);                            //¹Ø±ÕÄ¿Â¼×ÊÔ´
+				closedir($dir_handle);                            //å…³é—­ç›®å½•èµ„æº
 			}
 		}
 	}
