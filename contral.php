@@ -12,6 +12,6 @@
 	if(isset($_GET["dirname"]))    //如果接收到提供过来的目录名称则条件成立
 		$fileaction->getForm("filesystem.php?dirname=".$_GET["dirname"]);  //获取用户操作表单界面
 	else
-		$fileaction->getForm("filesystem.php");                          //获取用户操作表单界面
+		$fileaction->getForm("filesystem.php");                          //获取用户操作表单界面aa
 ?>
 
